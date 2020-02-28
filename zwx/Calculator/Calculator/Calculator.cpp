@@ -112,7 +112,7 @@ string Calculator::Solve(string formula) {
 
 int main()
 {
-	int N;
+	/*int N;
 	cin >> N;
 	Calculator* calc = new Calculator();
 	while (N--) {
@@ -130,7 +130,14 @@ int main()
 		}
 		Sleep(1000);
 	}
-	getchar();
+	getchar();*/
+	for (int i = 0; i < 10000000; i++) {
+		Calculator* calc = new Calculator();
+		string question = calc->MakeFormula();
+		cout << question << endl;
+		string ret = calc->Solve("11+22");
+		cout << ret << endl;
+	}
 }
 
 
