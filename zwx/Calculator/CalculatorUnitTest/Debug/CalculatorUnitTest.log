@@ -1,0 +1,3 @@
+﻿LINK : warning LNK4076: 增量状态文件“Z:\learning\SoftwareEngineering\projects\Calculator\zwx\Calculator\Debug\CalculatorUnitTest.ilk”无效(将删除)；正以非增量方式链接
+    正在创建库 Z:\learning\SoftwareEngineering\projects\Calculator\zwx\Calculator\Debug\CalculatorUnitTest.lib 和对象 Z:\learning\SoftwareEngineering\projects\Calculator\zwx\Calculator\Debug\CalculatorUnitTest.exp
+  CalculatorUnitTest.vcxproj -> Z:\learning\SoftwareEngineering\projects\Calculator\zwx\Calculator\Debug\CalculatorUnitTest.dll

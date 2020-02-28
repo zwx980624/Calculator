@@ -7,6 +7,8 @@
 #include <ctime>
 #include <string>
 #include "Calculator.h"
+#include<windows.h>
+
 
 #define random(a,b) (rand()%(b-a+1)+a)
 
@@ -43,8 +45,8 @@ string Calculator::Solve(string formula) {
 				tempStack->push_back(formula.substr(k));
 			}
 			else {
-				if (k < j) {
-					tempStack->push_back(formula.substr(k, j + 1));
+				if (k <= j) {
+					tempStack->push_back(formula.substr(k, j + 1 - k));
 				}
 				if (operatorStack->empty()) {
 					operatorStack->push(formulaChar);
@@ -56,9 +58,10 @@ string Calculator::Solve(string formula) {
 						operatorStack->push(formulaChar);
 					}
 					else {
-						tempStack->push_back(to_string(operatorStack->top()));
+						tempStack->push_back(string(1, operatorStack->top()));
 						operatorStack->pop();
-						operatorStack->push(formulaChar);
+						//operatorStack->push(formulaChar);
+						j--; //保证优先级>=的都出栈
 					}
 				}
 			}
@@ -97,6 +100,9 @@ string Calculator::Solve(string formula) {
 				calcStack->push(to_string(a1 * b1));
 			}
 			else if (peekChar == "/") {
+				if (a1 % b1 != 0) {
+					return "CANNOT DIV";
+				}
 				calcStack->push(to_string(a1 / b1));
 			}
 		}
@@ -106,11 +112,24 @@ string Calculator::Solve(string formula) {
 
 int main()
 {
+	int N;
+	cin >> N;
 	Calculator* calc = new Calculator();
-	string question = calc->MakeFormula();
-	cout << question << endl;
-	string ret = calc->Solve("11+22");
-	cout << ret << endl;
+	while (N--) {
+		string question = calc->MakeFormula();
+		//question = "2/3";
+		string ret = calc->Solve(question);
+		if (ret == "CANNOT DIV") {
+			N++;
+			//cout << question << endl;
+			//cout << ret << endl;
+		}
+		else {
+			cout << question << endl;
+			cout << ret << endl;
+		}
+		Sleep(1000);
+	}
 	getchar();
 }
 
