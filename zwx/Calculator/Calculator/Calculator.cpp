@@ -8,6 +8,7 @@
 #include <string>
 #include "Calculator.h"
 #include<windows.h>
+#include <fstream>
 
 
 #define random(a,b) (rand()%(b-a+1)+a)
@@ -18,7 +19,7 @@ Calculator::Calculator() {}
 
 string Calculator::MakeFormula() {
 	string formula = "";
-	srand((unsigned int)time(NULL));
+	//srand((unsigned int)time(NULL));
 	int count = random(1, 3);
 	int start = 0;
 	int number1 = random(1, 100);
@@ -112,32 +113,31 @@ string Calculator::Solve(string formula) {
 
 int main()
 {
-	/*int N;
+	int N;
 	cin >> N;
 	Calculator* calc = new Calculator();
+	srand((unsigned int)time(NULL));
+	ofstream fout;
+	fout.open("subject.txt");
 	while (N--) {
 		string question = calc->MakeFormula();
-		//question = "2/3";
 		string ret = calc->Solve(question);
 		if (ret == "CANNOT DIV") {
 			N++;
-			//cout << question << endl;
-			//cout << ret << endl;
 		}
 		else {
-			cout << question << endl;
 			cout << ret << endl;
+			fout << ret << endl;
 		}
-		Sleep(1000);
 	}
-	getchar();*/
+	/*
 	for (int i = 0; i < 10000000; i++) {
 		Calculator* calc = new Calculator();
 		string question = calc->MakeFormula();
 		cout << question << endl;
 		string ret = calc->Solve("11+22");
 		cout << ret << endl;
-	}
+	}*/
 }
 
 
